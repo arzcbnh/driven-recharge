@@ -8,6 +8,12 @@ async function postPhones(req: Request, res: Response) {
     res.sendStatus(httpStatus.CREATED);
 }
 
+async function getPhonesByCpf(req: Request, res: Response) {
+    const phones = await phonesService.readPhones("cpf", req.params.cpf);
+    res.send(phones);
+}
+
 export const phonesController = {
     postPhones,
+    getPhonesByCpf,
 };
