@@ -1,18 +1,20 @@
 import { PhoneNotFoundError, ValueOutOfBoundsError } from "#error";
-import { Recharge } from "#protocols";
+import { RechargeRequest } from "#protocols";
 import { rechargesRepository } from "#repositories";
 import { phonesService } from "./phonesService.js";
 
-async function createRecharge(data: Recharge) {
-    if (await phonesService.readPhoneById(data.phone_id) == null) {
-        throw new PhoneNotFoundError(data.phone_id);
+async function createRecharge(req: RechargeRequest) {
+    const phones = await phonesService.readPhones("id", req.phone_id);
+
+    if (phones[0] == null) {
+        throw new PhoneNotFoundError(req.phone_id);
     }
 
-    if (isValueOutOfBounds(data.value)) {
-        throw new ValueOutOfBoundsError(data.value);
+    if (isValueOutOfBounds(req.value)) {
+        throw new ValueOutOfBoundsError(req.value);
     }
 
-    return rechargesRepository.insertRecharge(data);
+    return rechargesRepository.insertRecharge(req);
 }
 
 function isValueOutOfBounds(value: number) {
@@ -21,4 +23,4 @@ function isValueOutOfBounds(value: number) {
 
 export const rechargesService = {
     createRecharge,
-}
+};
