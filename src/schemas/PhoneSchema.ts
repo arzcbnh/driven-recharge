@@ -1,15 +1,15 @@
-import joi from "joi";
+import Joi from "joi";
 import { PhoneRegistryRequest } from "#protocols";
 
-export const PhoneSchema = joi.object<PhoneRegistryRequest>({
-    name: joi.string().required(),
-    description: joi.string().required(),
-    number: joi
+export const PhoneSchema = Joi.object<PhoneRegistryRequest>({
+    name: Joi.string().required(),
+    description: Joi.string().required(),
+    number: Joi
         .string()
         .pattern(/\d{11}/)
         .required(),
-    carrier: joi.number().integer().required(),
-    cpf: joi
+    carrier: Joi.number().integer().required(),
+    cpf: Joi
         .string()
         .pattern(/\d{11}/)
         .required(),
