@@ -23,5 +23,15 @@
         "prettier": "^3.3.3",
         "tsx": "^4.19.1",
         "typescript": "^5.6.3"
+    },
+    "imports": {
+        "#controllers": "./build/controllers/index.js",
+        "#error": "./build/error.js",
+        "#middleware": "./build/middleware/index.js",
+        "#protocols": "./build/protocols/index.js",
+        "#repositories": "./build/repositories/index.js",
+        "#routes": "./build/routes/index.js",
+        "#schemas": "./build/schemas/index.js",
+        "#services": "./build/services/index.js"
     }
 }

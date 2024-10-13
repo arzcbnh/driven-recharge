@@ -3,6 +3,16 @@
         "target": "es2015",
         "module": "node16",
         "baseUrl": "./src",
+        "paths": {
+            "#controllers": ["controllers/index.js"],
+            "#error": ["error.js"],
+            "#middleware": ["middleware/index.js"],
+            "#protocols": ["protocols/index.js"],
+            "#repositories": ["repositories/index.js"],
+            "#routes": ["routes/index.js"],
+            "#schemas": ["schemas/index.js"],
+            "#services": ["services/index.js"]
+        },
         "outDir": "./build",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
