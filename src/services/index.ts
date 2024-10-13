@@ -1,3 +1,3 @@
-export { PhoneService } from "./phonesService.js";
-export { RechargeService } from "./rechargesService.js";
-export { CarrierService } from "./CarrierService.js";
+export { PhoneService } from "./phone.service.js";
+export { RechargeService } from "./recharge.service.js";
+export { CarrierService } from "./carrier.service.js";

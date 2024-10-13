@@ -1,2 +1,2 @@
-export { validateRequest } from "./validateRequest.js";
-export { handleError } from "./handleError.js";
+export { validateRequest } from "./validateRequest.middleware.js";
+export { handleError } from "./handleError.middleware.js";

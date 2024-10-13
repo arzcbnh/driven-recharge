@@ -1,3 +1,3 @@
-export { PhoneRepository } from "./phonesRepository.js";
-export { RechargeRepository } from "./rechargesRepository.js";
+export { PhoneRepository } from "./phone.repository.js";
+export { RechargeRepository } from "./recharge.repository.js";
 export { CarrierRepository } from "./carrier.repository.js";

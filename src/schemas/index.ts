@@ -1,2 +1,2 @@
-export { PhoneSchema } from "./PhoneSchema.js";
-export { RechargeSchema } from "./RechargeSchema.js";
+export { PhoneSchema } from "./phone.schema.js";
+export { RechargeSchema } from "./recharge.schema.js";

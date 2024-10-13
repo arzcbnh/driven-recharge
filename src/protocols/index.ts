@@ -1,3 +1,3 @@
-export * from "./Phone.js";
-export * from "./Recharge.js";
-export * from "./Carrier.js";
+export * from "./phone.protocol.js";
+export * from "./recharge.protocol.js";
+export * from "./carrier.protocol.js";
