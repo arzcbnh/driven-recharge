@@ -1,4 +1,4 @@
-import { RechargeRequest } from "protocols/Recharge.js";
+import { RechargeRequest } from "#protocols";
 import { database } from "./database.js";
 
 function insertRecharge({ phone_id, value }: RechargeRequest) {
