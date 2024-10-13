@@ -23,29 +23,23 @@ async function registerPhone({ name, description, carrier, number, cpf }: PhoneR
     });
 }
 
-async function readPhones(cpf: string) {
-    const res = await phonesRepository.selectPhonesByCpf(cpf);
+async function readPhones(column: "id" | "number" | "cpf", value: number | string) {
+    const res = await phonesRepository.selectPhones(column, value);
     return res.rows;
 }
 
-async function readPhoneById(id: number) {
-    const res = await phonesRepository.selectPhoneById(id);
-    return res.rows[0];
-}
-
 async function isAlreadyStored(number: string) {
-    const res = await phonesRepository.selectPhoneByNumber(number);
+    const res = await phonesRepository.selectPhones("number", number);
     return res.rowCount !== 0;
 }
 
 async function isExceedingStorage(cpf: string) {
-    const res = await phonesRepository.selectPhonesByCpf(cpf);
+    const res = await phonesRepository.selectPhones("cpf", cpf);
     return res.rowCount === 3;
 }
 
 export const phonesService = {
     registerPhone,
     readPhones,
-    readPhoneById,
     isAlreadyStored,
 };
