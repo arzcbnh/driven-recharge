@@ -11,7 +11,7 @@ async function registerPhone(data: Phone) {
         throw new ExceededStorageError(data.cpf);
     }
 
-    phonesRepository.insertPhone(data);
+    return phonesRepository.insertPhone(data);
 }
 
 async function isAlreadyStored(number: string) {
