@@ -1,1 +1,2 @@
 export { phonesRoute } from "./phonesRoute.js";
+export { DocumentRoute } from "./documentRoute.js";
