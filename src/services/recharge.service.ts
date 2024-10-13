@@ -1,7 +1,7 @@
 import { PhoneNotFoundError, ValueOutOfBoundsError } from "#error";
 import { RechargeRequest } from "#protocols";
 import { RechargeRepository } from "#repositories";
-import { PhoneService } from "./phonesService.js";
+import { PhoneService } from "#services";
 
 async function createRecharge(req: RechargeRequest) {
     const phones = await PhoneService.readPhones("id", req.phone_id);
