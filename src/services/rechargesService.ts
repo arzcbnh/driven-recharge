@@ -1,6 +1,6 @@
 import { PhoneNotFoundError, ValueOutOfBoundsError } from "#error";
 import { RechargeRequest } from "#protocols";
-import { rechargesRepository } from "#repositories";
+import { RechargeRepository } from "#repositories";
 import { PhoneService } from "./phonesService.js";
 
 async function createRecharge(req: RechargeRequest) {
@@ -14,7 +14,7 @@ async function createRecharge(req: RechargeRequest) {
         throw new ValueOutOfBoundsError(req.value);
     }
 
-    return rechargesRepository.insertRecharge(req);
+    return RechargeRepository.insertRecharge(req);
 }
 
 function isValueOutOfBounds(value: number) {

@@ -10,6 +10,6 @@ function insertRecharge({ phone_id, value }: RechargeRequest) {
     );
 }
 
-export const rechargesRepository = {
+export const RechargeRepository = {
     insertRecharge,
 };

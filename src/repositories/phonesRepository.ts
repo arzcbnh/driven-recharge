@@ -15,7 +15,7 @@ function insertPhone({ name, description, carrier_id, number, cpf }: Omit<PhoneD
     );
 }
 
-export const phonesRepository = {
+export const PhoneRepository = {
     selectPhones,
     insertPhone,
 };

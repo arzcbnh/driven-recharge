@@ -1,6 +1,6 @@
 import { AlreadyStoredError, CarrierNotFoundError, ExceededStorageError } from "#error";
 import { PhoneRegistryRequest } from "#protocols";
-import { phonesRepository } from "#repositories";
+import { PhoneRepository } from "#repositories";
 import { CarrierService } from "#services";
 
 async function registerPhone({ name, description, carrier, number, cpf }: PhoneRegistryRequest) {
@@ -18,7 +18,7 @@ async function registerPhone({ name, description, carrier, number, cpf }: PhoneR
 
     const carrier_id = (await CarrierService.readCarrier("code", carrier)).id;
 
-    return phonesRepository.insertPhone({
+    return PhoneRepository.insertPhone({
         name,
         description,
         number,
@@ -28,17 +28,17 @@ async function registerPhone({ name, description, carrier, number, cpf }: PhoneR
 }
 
 async function readPhones(column: "id" | "number" | "cpf", value: number | string) {
-    const res = await phonesRepository.selectPhones(column, value);
+    const res = await PhoneRepository.selectPhones(column, value);
     return res.rows;
 }
 
 async function isAlreadyStored(number: string) {
-    const res = await phonesRepository.selectPhones("number", number);
+    const res = await PhoneRepository.selectPhones("number", number);
     return res.rowCount !== 0;
 }
 
 async function isExceedingStorage(cpf: string) {
-    const res = await phonesRepository.selectPhones("cpf", cpf);
+    const res = await PhoneRepository.selectPhones("cpf", cpf);
     return res.rowCount === 3;
 }
 
