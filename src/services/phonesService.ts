@@ -14,6 +14,11 @@ async function registerPhone(data: Phone) {
     return phonesRepository.insertPhone(data);
 }
 
+async function readPhones(cpf: string) {
+    const res = await phonesRepository.selectPhonesByCpf(cpf);
+    return res.rows;
+}
+
 async function isAlreadyStored(number: string) {
     const res = await phonesRepository.selectPhoneByNumber(number);
     return res.rowCount !== 0;
@@ -26,4 +31,5 @@ async function isExceedingStorage(cpf: string) {
 
 export const phonesService = {
     registerPhone,
+    readPhones,
 };
