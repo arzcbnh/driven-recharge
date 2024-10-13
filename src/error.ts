@@ -22,6 +22,12 @@ export class NotFoundError extends Error {
     }
 }
 
+export class CarrierNotFoundError extends NotFoundError {
+    constructor(code: number) {
+        super(`Carrier with code ${code} not found.`);
+    }
+}
+
 export class PhoneNotFoundError extends NotFoundError {
     constructor(id: number | string) {
         super(`Phone with id ${id} not found.`);

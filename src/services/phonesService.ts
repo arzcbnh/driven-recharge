@@ -1,4 +1,4 @@
-import { AlreadyStoredError, ExceededStorageError } from "#error";
+import { AlreadyStoredError, CarrierNotFoundError, ExceededStorageError } from "#error";
 import { PhoneRegistryRequest } from "#protocols";
 import { phonesRepository } from "#repositories";
 import { CarrierService } from "#services";
@@ -10,6 +10,10 @@ async function registerPhone({ name, description, carrier, number, cpf }: PhoneR
 
     if (await isExceedingStorage(cpf)) {
         throw new ExceededStorageError(cpf);
+    }
+
+    if (!CarrierService.isCarrier(carrier)) {
+        throw new CarrierNotFoundError(carrier);
     }
 
     const carrier_id = (await CarrierService.readCarrier("code", carrier)).id;
