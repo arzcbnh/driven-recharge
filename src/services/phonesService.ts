@@ -19,6 +19,11 @@ async function readPhones(cpf: string) {
     return res.rows;
 }
 
+async function readPhoneById(id: number) {
+    const res = await phonesRepository.selectPhoneById(id);
+    return res.rows[0];
+}
+
 async function isAlreadyStored(number: string) {
     const res = await phonesRepository.selectPhoneByNumber(number);
     return res.rowCount !== 0;
@@ -32,4 +37,6 @@ async function isExceedingStorage(cpf: string) {
 export const phonesService = {
     registerPhone,
     readPhones,
+    readPhoneById,
+    isAlreadyStored,
 };
