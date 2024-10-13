@@ -42,7 +42,7 @@ async function isExceedingStorage(cpf: string) {
     return res.rowCount === 3;
 }
 
-export const phonesService = {
+export const PhoneService = {
     registerPhone,
     readPhones,
     isAlreadyStored,
