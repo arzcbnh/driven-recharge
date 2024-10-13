@@ -1,17 +1,26 @@
 import { AlreadyStoredError, ExceededStorageError } from "#error";
-import { Phone } from "#protocols";
+import { PhoneRegistryRequest } from "#protocols";
 import { phonesRepository } from "#repositories";
+import { CarrierService } from "#services";
 
-async function registerPhone(data: Phone) {
-    if (await isAlreadyStored(data.number)) {
-        throw new AlreadyStoredError(data.number);
+async function registerPhone({ name, description, carrier, number, cpf }: PhoneRegistryRequest) {
+    if (await isAlreadyStored(number)) {
+        throw new AlreadyStoredError(number);
     }
 
-    if (await isExceedingStorage(data.cpf)) {
-        throw new ExceededStorageError(data.cpf);
+    if (await isExceedingStorage(cpf)) {
+        throw new ExceededStorageError(cpf);
     }
 
-    return phonesRepository.insertPhone(data);
+    const carrier_id = (await CarrierService.readCarrier("code", carrier)).id;
+
+    return phonesRepository.insertPhone({
+        name,
+        description,
+        number,
+        cpf,
+        carrier_id,
+    });
 }
 
 async function readPhones(cpf: string) {
