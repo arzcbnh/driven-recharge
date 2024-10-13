@@ -17,7 +17,7 @@ export interface PhoneRegistryRequest extends PhoneBase {
     carrier: "15" | "21" | "31" | "41";
 }
 
-export interface PhoneQueryResult extends PhoneBase {
+export interface PhoneDatabaseEntry extends PhoneBase {
     id: number;
     carrier_id: number;
 }
