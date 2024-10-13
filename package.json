@@ -5,7 +5,7 @@
         "build": "tsc",
         "dev": "tsx watch src/index.ts",
         "format": "prettier . --write | grep -v 'unchanged'",
-        "lint": "eslint src",
+        "lint": "eslint .",
         "type-check": "tsc --noEmit"
     },
     "dependencies": {
