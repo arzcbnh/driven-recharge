@@ -1,2 +1,2 @@
-export { Phone } from "./Phone.js";
+export * from "./Phone.js";
 export { Recharge } from "./Recharge.js";
