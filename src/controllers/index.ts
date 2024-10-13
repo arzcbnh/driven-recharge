@@ -1,2 +1,2 @@
-export { phonesController } from "./phonesController.js";
-export { rechargesController } from "./rechargesController.js";
+export { PhoneController } from "./phonesController.js";
+export { RechargeController } from "./rechargesController.js";

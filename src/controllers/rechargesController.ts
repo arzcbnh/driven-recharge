@@ -7,6 +7,6 @@ async function postRecharge(req: Request, res: Response) {
     res.status(httpStatus.CREATED);
 }
 
-export const rechargesController = {
+export const RechargeController = {
     postRecharge,
 }
