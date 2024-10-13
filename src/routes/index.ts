@@ -1,2 +1,2 @@
-export { phonesRoute } from "./phonesRoute.js";
-export { rechargesRoute } from "./rechargesRoute.js";
+export { PhoneRoute } from "./phonesRoute.js";
+export { RechargeRoute } from "./rechargesRoute.js";

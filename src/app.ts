@@ -1,12 +1,12 @@
 import express, { json } from "express";
-import { phonesRoute, rechargesRoute } from "#routes";
+import { PhoneRoute, RechargeRoute } from "#routes";
 import { handleError } from "#middleware";
 
 const app = express();
 app.use(json());
 
-app.use(phonesRoute);
-app.use(rechargesRoute);
+app.use(PhoneRoute);
+app.use(RechargeRoute);
 app.use(handleError);
 
 const port = process.env.PORT;
