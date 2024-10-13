@@ -15,3 +15,27 @@ export class ExceededStorageError extends ConflictError {
         super(`CPF ${cpf} already has three phones registered.`);
     }
 }
+
+export class NotFoundError extends Error {
+    constructor(message: string) {
+        super(message);
+    }
+}
+
+export class PhoneNotFoundError extends NotFoundError {
+    constructor(id: number | string) {
+        super(`Phone with id ${id} not found.`);
+    }
+}
+
+export class UnprocessableEntityError extends Error {
+    constructor(message: string) {
+        super(message);
+    }
+}
+
+export class ValueOutOfBoundsError extends UnprocessableEntityError {
+    constructor(value: number) {
+        super(`Value ${value} out of bounds, must be between R$10,00 and R$1000,00.`)
+    }
+}
