@@ -14,7 +14,7 @@ interface PhoneBase {
 }
 
 export interface PhoneRegistryRequest extends PhoneBase {
-    carrier: "15" | "21" | "31" | "41";
+    carrier: 15 | 21 | 31 | 41;
 }
 
 export interface PhoneDatabaseEntry extends PhoneBase {
