@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import http from "http-status";
+import httpStatus from "http-status";
 import { Schema } from "joi";
 
 export function validateRequest(schema: Schema) {
@@ -8,7 +8,8 @@ export function validateRequest(schema: Schema) {
 
         if (result.error != null) {
             const messages = result.error.details.map(detail => detail.message);
-            return res.status(http.UNPROCESSABLE_ENTITY).send(messages);
+            res.status(httpStatus.UNPROCESSABLE_ENTITY).send(messages);
+            return;
         }
 
         req.body = result.value;
