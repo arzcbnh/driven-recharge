@@ -1,4 +1,4 @@
-import { RechargeRequest } from "#protocols";
+import { RechargeDbEntry, RechargeRequest } from "#protocols";
 import { database } from "./database.js";
 
 function insertRecharge({ phone_id, value }: RechargeRequest) {
@@ -10,6 +10,11 @@ function insertRecharge({ phone_id, value }: RechargeRequest) {
     );
 }
 
+function selectRecharges(number: string) {
+    return database.query<RechargeDbEntry>(`SELECT * FROM recharges WHERE number = $1;`, [number]);
+}
+
 export const RechargeRepository = {
     insertRecharge,
+    selectRecharges,
 };

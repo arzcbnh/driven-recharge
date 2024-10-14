@@ -5,3 +5,4 @@ import { Router } from "express";
 
 export const RechargeRoute = Router();
 RechargeRoute.post("/recharges", validateRequest(RechargeSchema), RechargeController.postRecharge);
+RechargeRoute.get("/recharges/:number", RechargeController.getRechargesByNumber);

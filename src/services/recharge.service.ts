@@ -13,6 +13,12 @@ async function createRecharge(req: RechargeRequest) {
     return RechargeRepository.insertRecharge(req);
 }
 
+async function readRecharges(number: string) {
+    const res = await RechargeRepository.selectRecharges(number);
+    return res.rows;
+}
+
 export const RechargeService = {
     createRecharge,
+    readRecharges,
 };

@@ -7,6 +7,12 @@ async function postRecharge(req: Request, res: Response) {
     res.status(httpStatus.CREATED);
 }
 
+async function getRechargesByNumber(req: Request, res: Response) {
+    const recharges = await RechargeService.readRecharges(req.params.number);
+    res.send(recharges);
+}
+
 export const RechargeController = {
     postRecharge,
+    getRechargesByNumber,
 };
