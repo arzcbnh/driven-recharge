@@ -73,6 +73,5 @@ async function isExceedingStorage(document: string) {
 export const PhoneService = {
     registerPhone,
     readPhones,
-    isAlreadyStored,
     generateSummary,
 };
