@@ -1,5 +1,5 @@
 import { AlreadyStoredError, CarrierNotFoundError, ExceededStorageError } from "#error";
-import { PhoneDatabaseEntry, PhoneHydrated, PhoneRegistryRequest, RechargeDbEntry, Summary } from "#protocols";
+import { PhoneDbEntry, PhoneHydrated, PhoneRegistryRequest, RechargeDbEntry, Summary } from "#protocols";
 import { PhoneRepository } from "#repositories";
 import { CarrierService, RechargeService } from "#services";
 
@@ -39,7 +39,7 @@ async function generateSummary(cpf: string): Promise<Summary> {
         return transformedRecharge;
     }
 
-    async function hydratePhone(phone: PhoneDatabaseEntry): Promise<PhoneHydrated> {
+    async function hydratePhone(phone: PhoneDbEntry): Promise<PhoneHydrated> {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { carrier_id, cpf, ...transformedPhone } = phone;
         const recharges = await RechargeService.readRecharges(phone.number);

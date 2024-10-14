@@ -9,7 +9,7 @@ export type PhoneRegistryRequest = {
     cpf: string;
 };
 
-export type PhoneDatabaseEntry = {
+export type PhoneDbEntry = {
     id: number;
     carrier_id: number;
     name: string;
