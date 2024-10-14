@@ -4,13 +4,11 @@ import { PhoneRegistryRequest } from "#protocols";
 export const PhoneSchema = Joi.object<PhoneRegistryRequest>({
     name: Joi.string().required(),
     description: Joi.string().required(),
-    number: Joi
-        .string()
+    number: Joi.string()
         .pattern(/\d{11}/)
         .required(),
     carrier: Joi.number().integer().required(),
-    cpf: Joi
-        .string()
+    cpf: Joi.string()
         .pattern(/\d{11}/)
         .required(),
 });

@@ -9,4 +9,4 @@ async function postRecharge(req: Request, res: Response) {
 
 export const RechargeController = {
     postRecharge,
-}
+};
