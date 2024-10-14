@@ -10,8 +10,8 @@ function insertRecharge({ phone_id, value }: RechargeRequest) {
     );
 }
 
-function selectRecharges(number: string) {
-    return database.query<RechargeDbEntry>(`SELECT * FROM recharges WHERE number = $1;`, [number]);
+function selectRecharges(id: number) {
+    return database.query<RechargeDbEntry>(`SELECT * FROM recharges WHERE phone_id = $1;`, [id]);
 }
 
 export const RechargeRepository = {

@@ -14,7 +14,13 @@ async function createRecharge(req: RechargeRequest) {
 }
 
 async function readRecharges(number: string) {
-    const res = await RechargeRepository.selectRecharges(number);
+    const phones = await PhoneService.readPhones("number", number);
+
+    if (phones[0] == null) {
+        throw new PhoneNotFoundError(number);
+    }
+
+    const res = await RechargeRepository.selectRecharges(phones[0].id);
     return res.rows;
 }
 
