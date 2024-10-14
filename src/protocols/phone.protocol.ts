@@ -1,4 +1,4 @@
-type PhoneBase = {
+export type PhoneBase = {
     name: string;
     description: string;
     number: string;
