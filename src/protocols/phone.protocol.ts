@@ -6,7 +6,7 @@ export type PhoneRegistryRequest = {
     name: string;
     description: string;
     number: string;
-    cpf: string;
+    document: string;
 };
 
 export type PhoneDbEntry = {
@@ -15,7 +15,7 @@ export type PhoneDbEntry = {
     name: string;
     description: string;
     number: string;
-    cpf: string;
+    document: string;
 };
 
 export type PhoneHydrated = {

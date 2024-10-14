@@ -8,12 +8,12 @@ async function postPhone(req: Request, res: Response) {
     res.sendStatus(httpStatus.CREATED);
 }
 
-async function getPhonesByCpf(req: Request, res: Response) {
-    const phones = await PhoneService.readPhones("cpf", req.params.cpf);
+async function getPhonesByDocument(req: Request, res: Response) {
+    const phones = await PhoneService.readPhones("document", req.params.document);
     res.send(phones);
 }
 
 export const PhoneController = {
     postPhone,
-    getPhonesByCpf,
+    getPhonesByDocument,
 };

@@ -5,4 +5,4 @@ import { PhoneController } from "#controllers";
 
 export const PhoneRoute = Router();
 PhoneRoute.post("/phones", validateRequest(PhoneSchema), PhoneController.postPhone);
-PhoneRoute.get("/phones/:cpf", PhoneController.getPhonesByCpf);
+PhoneRoute.get("/phones/:document", PhoneController.getPhonesByDocument);

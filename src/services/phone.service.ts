@@ -3,13 +3,13 @@ import { PhoneDbEntry, PhoneHydrated, PhoneRegistryRequest, RechargeDbEntry, Sum
 import { PhoneRepository } from "#repositories";
 import { CarrierService, RechargeService } from "#services";
 
-async function registerPhone({ name, description, carrier, number, cpf }: PhoneRegistryRequest) {
+async function registerPhone({ name, description, carrier, number, document }: PhoneRegistryRequest) {
     if (await isAlreadyStored(number)) {
         throw new AlreadyStoredError(number);
     }
 
-    if (await isExceedingStorage(cpf)) {
-        throw new ExceededStorageError(cpf);
+    if (await isExceedingStorage(document)) {
+        throw new ExceededStorageError(document);
     }
 
     if (!CarrierService.isCarrier(carrier)) {
@@ -22,17 +22,17 @@ async function registerPhone({ name, description, carrier, number, cpf }: PhoneR
         name,
         description,
         number,
-        cpf,
+        document,
         carrier_id,
     });
 }
 
-async function readPhones(column: "id" | "number" | "cpf", value: number | string) {
+async function readPhones(column: "id" | "number" | "document", value: number | string) {
     const res = await PhoneRepository.selectPhones(column, value);
     return res.rows;
 }
 
-async function generateSummary(cpf: string): Promise<Summary> {
+async function generateSummary(document: string): Promise<Summary> {
     function transformRecharge(recharge: RechargeDbEntry) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { phone_id, ...transformedRecharge } = recharge;
@@ -41,7 +41,7 @@ async function generateSummary(cpf: string): Promise<Summary> {
 
     async function hydratePhone(phone: PhoneDbEntry): Promise<PhoneHydrated> {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { carrier_id, cpf, ...transformedPhone } = phone;
+        const { carrier_id, document, ...transformedPhone } = phone;
         const recharges = await RechargeService.readRecharges(phone.number);
 
         return {
@@ -51,11 +51,11 @@ async function generateSummary(cpf: string): Promise<Summary> {
         };
     }
 
-    const phones = await readPhones("cpf", cpf);
+    const phones = await readPhones("document", document);
     const hydratedPhones = await Promise.all(phones.map(hydratePhone));
 
     return {
-        document: cpf,
+        document: document,
         phones: hydratedPhones,
     };
 }
@@ -65,8 +65,8 @@ async function isAlreadyStored(number: string) {
     return res.rowCount !== 0;
 }
 
-async function isExceedingStorage(cpf: string) {
-    const res = await PhoneRepository.selectPhones("cpf", cpf);
+async function isExceedingStorage(document: string) {
+    const res = await PhoneRepository.selectPhones("document", document);
     return res.rowCount === 3;
 }
 

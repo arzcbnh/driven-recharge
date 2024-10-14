@@ -11,8 +11,8 @@ export class AlreadyStoredError extends ConflictError {
 }
 
 export class ExceededStorageError extends ConflictError {
-    constructor(cpf: string) {
-        super(`CPF ${cpf} already has three phones registered.`);
+    constructor(document: string) {
+        super(`Document ${document} already has three phones registered.`);
     }
 }
 

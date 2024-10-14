@@ -8,7 +8,7 @@ export const PhoneSchema = Joi.object<PhoneRegistryRequest>({
         .pattern(/\d{11}/)
         .required(),
     carrier: Joi.number().integer().required(),
-    cpf: Joi.string()
+    document: Joi.string()
         .pattern(/\d{11}/)
         .required(),
 });
