@@ -17,14 +17,15 @@ async function registerPhone({ name, description, carrier, number, document }: P
     }
 
     const carrier_id = (await CarrierService.readCarrier("code", carrier)).id;
-
-    return PhoneRepository.insertPhone({
+    await PhoneRepository.insertPhone({
         name,
         description,
         number,
         document,
         carrier_id,
     });
+
+    return readPhones("number", number);
 }
 
 async function readPhones(column: "id" | "number" | "document", value: number | string) {

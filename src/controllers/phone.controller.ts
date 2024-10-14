@@ -4,8 +4,8 @@ import { Request, Response } from "express";
 import httpStatus from "http-status";
 
 async function postPhone(req: Request, res: Response) {
-    await PhoneService.registerPhone(req.body as PhoneRegistryRequest);
-    res.sendStatus(httpStatus.CREATED);
+    const entry = await PhoneService.registerPhone(req.body as PhoneRegistryRequest);
+    res.status(httpStatus.CREATED).send(entry);
 }
 
 async function getPhonesByDocument(req: Request, res: Response) {
