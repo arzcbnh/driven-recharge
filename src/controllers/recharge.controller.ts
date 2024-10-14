@@ -4,7 +4,7 @@ import { RechargeService } from "#services";
 
 async function postRecharge(req: Request, res: Response) {
     await RechargeService.createRecharge(req.body);
-    res.status(httpStatus.CREATED);
+    res.sendStatus(httpStatus.CREATED);
 }
 
 async function getRechargesByNumber(req: Request, res: Response) {
