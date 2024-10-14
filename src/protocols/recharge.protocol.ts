@@ -1,9 +1,9 @@
-export interface RechargeRequest {
+export type RechargeRequest = {
     phone_id: number;
     value: number;
-}
+};
 
-export interface RechargeDbEntry extends RechargeRequest {
+export type RechargeDbEntry = RechargeRequest & {
     id: number;
     date: string;
-}
+};
