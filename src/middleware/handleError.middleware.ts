@@ -1,7 +1,8 @@
 import { ConflictError } from "#error";
-import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
+import { ErrorRequestHandler } from "express";
 import httpStatus from "http-status";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handleError: ErrorRequestHandler = (err, req, res, next) => {
     if (err instanceof ConflictError) {
         res.status(httpStatus.CONFLICT).send(err.message);
