@@ -2,7 +2,7 @@ import { PhoneDbEntry } from "#protocols";
 import { database } from "./database.js";
 
 function selectPhones(column: "id" | "number" | "document", value: number | string) {
-    return database.query<PhoneDbEntry>(`SELECT * FROM phones WHERE $1 = $2;`, [column, value]);
+    return database.query<PhoneDbEntry>(`SELECT * FROM phones WHERE ${column} = $1;`, [value]);
 }
 
 function insertPhone({ name, description, carrier_id, number, document }: Omit<PhoneDbEntry, "id">) {
