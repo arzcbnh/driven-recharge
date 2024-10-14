@@ -7,6 +7,7 @@ export function validateRequest(schema: Schema) {
         const result = schema.validate(req.body);
 
         if (result.error == null) {
+            req.body = result.value;
             return next();
         }
 
