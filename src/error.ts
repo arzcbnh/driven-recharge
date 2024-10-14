@@ -39,9 +39,3 @@ export class UnprocessableEntityError extends Error {
         super(message);
     }
 }
-
-export class ValueOutOfBoundsError extends UnprocessableEntityError {
-    constructor(value: number) {
-        super(`Value ${value} out of bounds, must be between R$10,00 and R$1000,00.`)
-    }
-}
